@@ -16,23 +16,20 @@ pipeline {
 
         stage('Descarga') {
             steps {
-                git url: 'https://github.com/AlejandraC311003/Conversiones.git',
-                    branch: 'main'
+                git url:'https://github.com/AlejandraC311003/Conversiones.git', branch: 'main'
             }
         }
 
         stage('Ejecutar') {
             steps {
-                sh 'python3 conversion.py'
+                sh 'python3 conversion.py '
             }
         }
 
         stage('Probar') {
             steps {
-                sh 'mkdir -p reports'
-                sh 'python3 -m pytest --junitxml=reports/results.xml'
+                sh 'python -m pytest --junitxml=reports/results.xml'
             }
-
             post {
                 always {
                     junit 'reports/results.xml'
