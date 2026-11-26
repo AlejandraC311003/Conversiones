@@ -1,28 +1,27 @@
-
 pipeline {
     agent {
         label 'python'
     }
 
     stages {
-
         stage('Entorno') {
             steps {
                 sh 'python3 --version'
                 sh 'pip3 --version'
-                sh 'pip3 install pytest'
+                sh 'pip install pytest'
             }
         }
 
         stage('Descarga') {
             steps {
-                git url:'https://github.com/AlejandraC311003/Conversiones.git', branch: 'main'
+                git url: 'https://github.com/janethC08/Conversiones.git', branch: 'main'
             }
         }
 
         stage('Ejecutar') {
             steps {
-                sh 'python3 conversion.py '
+                sh 'python3 Conversion.py'
+
             }
         }
 
