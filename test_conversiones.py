@@ -1,5 +1,5 @@
 import pytest
-import Conversion as con
+import conversion as con
 
 
 def test_pulgadas_cm():
